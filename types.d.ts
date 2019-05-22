@@ -10,3 +10,5 @@ declare type RedditResult = {
     children: ReadonlyArray<RedditPost>
   }
 }
+
+declare type PromiseResult<T> = T extends Promise<infer U> ? U : T
