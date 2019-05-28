@@ -1,21 +1,21 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
 
-const Posts = ({ posts, subreddit }: any) => (
+const Posts = ({ posts, subreddit }) => (
   <div>
     <h1>Posts in "{subreddit}"</h1>
     <ul>
-      {posts.map((post: any) => (
+      {posts.map(post => (
         <li key={post.data.id}>{post.data.title}</li>
       ))}
     </ul>
   </div>
 )
 
-const getInitialProps = async (context: any) => {
+const getInitialProps = async (context) => {
   const subreddit = context.query.subreddit
   const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`)
-  const result = await response.json() as RedditResult
+  const result = await response.json()
 
   return {
     subreddit,
